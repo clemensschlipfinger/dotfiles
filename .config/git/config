@@ -1,0 +1,7 @@
+[user]
+	email = clemens.schlipfinger@gmail.com
+	name = Clemens Schlipfinger
+[credential]
+	helper = store
+[init]
+	defaultBranch = main
