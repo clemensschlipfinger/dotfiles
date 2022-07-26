@@ -1,0 +1,9 @@
+[Unit]
+Description=udisks2 mount clemens_data
+
+[Service]
+RemainAfterExit=yes
+ExecStart=/usr/bin/udisksctl mount -b  /dev/disk/by-partuuid/4b4758fc-56ee-4f72-ab81-7c7a5c123449 
+ExecStop=/usr/bin/udisksctl unmount -b /dev/disk/by-partuuid/4b4758fc-56ee-4f72-ab81-7c7a5c123449 
+[Install]
+WantedBy=default.target
