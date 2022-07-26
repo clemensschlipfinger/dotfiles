@@ -1,0 +1,4 @@
+#
+# ./.zprofile
+#
+source ~/.profile
