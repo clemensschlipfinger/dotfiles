@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# monitorsetup-script
+#
+x=0
+for monitor in $(xrandr --query | grep " connected " | cut -d " " -f1); do
+	xrandr --output $monitor --off
+	xrandr --output $monitor --auto --pos $x"x0"
+	echo $monitor with x-offset $x
+		
+	if [ $(xrandr --query | grep $monitor | cut -d " " -f3) = "primary" ]
+	then
+		x=$(xrandr --query | grep $monitor | cut -d " " -f4 | cut -d "x" -f1)
+	else
+		x=$(xrandr --query | grep $monitor | cut -d " " -f3 | cut -d "x" -f1)
+	fi
+done

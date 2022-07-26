@@ -1,0 +1,26 @@
+#!/bin/python
+import ueberzug.lib.v0 as ueberzug
+import sys
+
+def usage():
+    print("usage:")
+    print("ueberzug-imgprev <path> <pos x> <pos y> <width>")
+
+if __name__ == '__main__':
+    try:
+        path = sys.argv[1]
+        posx = int(sys.argv[2])
+        posy = int(sys.argv[3])
+        width = int(sys.argv[4])
+    except:
+        usage()
+        quit()
+
+    with ueberzug.Canvas() as c:
+        demo = c.create_placement('demo', x=posx, y=posy, width=width, scaler=ueberzug.ScalerOption.CONTAIN.value)
+        demo.path = path
+        demo.visibility = ueberzug.Visibility.VISIBLE
+        try:
+            input()
+        except KeyboardInterrupt:
+            quit()
