@@ -1,0 +1,22 @@
+[Added Associations]
+image/jpeg=dfeh.desktop;feh.desktop;
+image/png=dfeh.desktop;feh.desktop;
+text/plain=nvim.desktop;org.gnome.gedit.desktop;
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+application/x-shellscript=nvim.desktop;org.gnome.gedit.desktop;
+text/csv=libreoffice-calc.desktop;
+
+[Default Applications]
+image/jpeg=dfeh.desktop;
+image/png=dfeh.desktop;
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/chrome=firefox.desktop
+text/html=firefox.desktop
+application/x-extension-htm=firefox.desktop
+application/x-extension-html=firefox.desktop
+application/x-extension-shtml=firefox.desktop
+application/xhtml+xml=firefox.desktop
+application/x-extension-xhtml=firefox.desktop
+application/x-extension-xht=firefox.desktop
+x-scheme-handler/msteams=teams.desktop
