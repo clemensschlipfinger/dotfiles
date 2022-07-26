@@ -1,0 +1,2 @@
+#!/bin/sh --
+exec dmenu -sb $(cat ~/.config/dmenu/color) "$@"

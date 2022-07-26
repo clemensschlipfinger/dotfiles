@@ -1,0 +1,62 @@
+#!/bin/dash
+#
+# Theme Switcher
+#
+#startup apps (polybar) 
+# env variables for filepaths
+#
+#apps (xmonad, rofi)
+# links to files are placed in the applicatonfolders
+#
+#Autostart in ~/.xinitrc
+# The ThemeSwitcher Script will be executed in xinitrc to apply the default theme 
+# but with the -no-x flag
+
+settheme () {
+# Set the Theme #
+ln -sf $themepath/dmenu ~/.config/dmenu/color
+ln -sf $themepath/theme.rasi ~/.config/rofi/
+ln -sf $(cat $themepath/feh) ~/.config/feh/background
+
+# Recompile Xmonad
+ln -sf $themepath/theme.hs ~/.xmonad/lib/Theme.hs
+xmonad --recompile
+
+# log the new active theme
+echo $1 > $themesfolder/active
+return 0
+}
+
+restartxapps () {
+### Restart the Applications ###
+#Feh
+feh --bg-scale --no-fehbg ~/.config/feh/background
+
+#Polybar
+#COLOR=$(cat $themepath/polybar) ~/.config/polybar/launch.sh &> /dev/null &
+
+#Xmonad
+xmonad --restart
+
+}
+	
+ask () {
+	confirmation=$(printf "no\nyes\n" | tdmenu -p "activate $1 theme?")
+	[ $confirmation = "yes" ] && return 0;
+	return 1
+}
+
+themepath=~/.config/desktop-themes/$1
+themesfolder=~/.config/desktop-themes/
+
+#prove selected theme 
+[ -z $1 ] && echo no theme selected. && exit; 
+ls  $themepath 1>/dev/null 2>/dev/null
+[ ! $? -eq 0 ] && echo selected theme not valid. && exit;
+
+#check if theme is already active
+[ $1 = $(cat $themesfolder/active) ] && echo selected theme already active &&exit
+
+#apply theme
+settheme $1
+restartxapps
