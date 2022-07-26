@@ -1,0 +1,38 @@
+#!/bin/sh --
+#
+# Control the mpd systemd service
+#
+
+start(){
+	systemctl --user restart $service	
+}
+
+stop(){
+	systemctl --user stop $service	
+}
+
+status(){
+	systemctl --user status $service	
+}
+
+isactive(){
+	systemctl --user is-active $service
+}
+
+
+service="mpd"
+
+case "$1" in
+  start)    start;;
+  stop)     stop;;
+  status)   status;;
+  isactive) isactive;;
+  *)
+  	isactive > /dev/null
+  	if [ $? -eq 0 ] 
+	then
+		stop
+	else
+		start
+	fi
+esac
