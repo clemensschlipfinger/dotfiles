@@ -1,0 +1,6 @@
+[Desktop Entry]
+Categories=Settings;
+Name=Mount Menu
+Exec=mount-menu
+Type=Application
+Icon=drive-removable-media

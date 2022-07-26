@@ -1,0 +1,45 @@
+#!/bin/bash
+#
+# Mount Menu
+#
+
+set -e
+
+roficommand="rofi -dmenu -i"
+summary="mount-menu"
+
+mountable="$(lsblk -rno "PATH,SIZE,FSTYPE,PARTLABEL,TYPE,MOUNTPOINT" | grep "part\|rom" | awk -F" {1}" '$6==""&&$3!=""{ print $1 "\t(" $2 " " $3 ")\t" $4 }')"
+mountmenu() {
+    chosen="$(echo "$mountable" | $roficommand -p "Mount which drive?")"
+    chosen="$(echo "$chosen" | awk '{print $1}')"
+
+    report=$(echo $(udisksctl mount -b $chosen 2>&1))
+    notify-send $summary "$report"
+}
+
+unmountable="$(lsblk -rno "PATH,SIZE,FSTYPE,PARTLABEL,TYPE,MOUNTPOINT" | grep "part\|rom" | awk -F" {1}" '$6~"/run/media/'$USER'"{ print $1 "\t(" $2 " " $3 ")\t" $4 "\t" $6}')"
+unmountmenu() {
+    chosen="$(echo "$unmountable" | $roficommand -p "Unmount which drive?")"
+    chosen="$(echo "$chosen" | awk '{print $1}')"
+
+    report=$(echo $(udisksctl unmount -b $chosen 2>&1))
+    notify-send $summary "$report"
+}
+
+chk=$(printf "Mount\nUnmount" | $roficommand -p "USB/Drives" )
+
+case $chk in 
+	Unmount)
+	if [ -z "$unmountable" ]; then
+		notify-send $summary "No drives to unmount." &&  exit
+	else
+    	unmountmenu
+	fi
+	;;
+	Mount)
+	if [ -z "$mountable" ]; then
+		notify-send "No drives detected" && exit
+	else
+		mountmenu
+	fi
+esac
