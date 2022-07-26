@@ -1,0 +1,42 @@
+#!/bin/zsh
+#
+# KUNST
+#
+
+trap die  0  # EXIT
+trap exit 15 # TERM
+trap exit 2  # INT
+trap exit 17 # CHILD
+
+coverfile=/tmp/kunst
+
+die() {
+    rm $coverfile
+    pkill -P $$
+}
+
+reload() {
+    imgpath=$(playerctl metadata --format '{{mpris:artUrl}}')
+    playerctlstatus=$status
+
+    imgpath=$(echo -n $imgpath | sed 's/^[ \t\n]*//;s/[ \t\n]*$//')
+
+    if [[ $playerctlstatus -lt 1 && ( $imgpath != "" ) ]]
+    then 
+        ln -sf ${imgpath:7} $coverfile
+    else 
+        ln -sf ~/.config/kunst/music-note.jpg $coverfile
+    fi
+}
+
+
+ln -sf ~/.config/kunst/music-note.jpg $coverfile
+dfeh --auto-reload --title KUNST -g 512x512 $coverfile &
+
+reload
+
+playerctl -F metadata --format '{{mpris:length}}' | 
+while read ; do
+    playerctl metadata --format '{{xesam:artist}} - {{xesam:album}} - {{xesam:title}}'
+    reload
+done
