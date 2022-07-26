@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Scrot-Script
+#
+#Options: -s ; -u
+
+scrot $1 -f -d 1 -o '/tmp/scrot-script.png' 
+xclip -selection clipboard -target image/png -i /tmp/scrot-script.png && rm /tmp/scrot-script.png
