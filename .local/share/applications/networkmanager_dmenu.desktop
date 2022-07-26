@@ -1,0 +1,6 @@
+[Desktop Entry]
+Categories=Settings;Network;Wifi;
+Name=Network Manager Menu
+Exec=networkmanager_dmenu
+Type=Application
+Icon=network
