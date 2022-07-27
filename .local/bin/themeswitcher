@@ -13,30 +13,30 @@
 # but with the -no-x flag
 
 settheme () {
-# Set the Theme #
-ln -sf $themepath/dmenu ~/.config/dmenu/color
-ln -sf $themepath/theme.rasi ~/.config/rofi/
-ln -sf $(cat $themepath/feh) ~/.config/feh/background
+    # Set the Theme #
+    ln -sf $themepath/dmenu ~/.config/dmenu/color
+    ln -sf $themepath/theme.rasi ~/.config/rofi/
+    ln -sf $(cat $themepath/feh) ~/.config/feh/background
 
-# Recompile Xmonad
-ln -sf $themepath/theme.hs ~/.xmonad/lib/Theme.hs
-xmonad --recompile
+    # Recompile Xmonad
+    ln -sf $themepath/theme.hs ~/.xmonad/lib/Theme.hs
+    xmonad --recompile
 
-# log the new active theme
-echo $1 > $themesfolder/active
-return 0
+    # log the new active theme
+    echo $1 > $themesfolder/active
+    return 0
 }
 
 restartxapps () {
-### Restart the Applications ###
-#Feh
-feh --bg-scale --no-fehbg ~/.config/feh/background
+    ### Restart the Applications ###
+    #Feh
+    feh --bg-scale --no-fehbg ~/.config/feh/background
 
-#Polybar
-#COLOR=$(cat $themepath/polybar) ~/.config/polybar/launch.sh &> /dev/null &
+    #Polybar
+    #COLOR=$(cat $themepath/polybar) ~/.config/polybar/launch.sh &> /dev/null &
 
-#Xmonad
-xmonad --restart
+    #Xmonad
+    xmonad --restart
 
 }
 	
