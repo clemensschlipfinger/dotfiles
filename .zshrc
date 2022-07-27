@@ -102,8 +102,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias l="exa -l"
-alias ll="exa -la"
+alias l="exa"
+alias ll="exa -l"
+alias la="exa -la"
 
 alias rm="rm -I"
 
