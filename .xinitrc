@@ -44,7 +44,6 @@ export QT_STYLE_OVERRIDE=adwaita-dark
 #export QT_STYLE_OVERRIDE=qt5ct
 
 #Java 
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export _JAVA_AWT_WM_NONREPARENTING=1 #window fix java
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on' # font fix java
 
