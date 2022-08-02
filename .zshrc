@@ -93,6 +93,9 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+#Enable vi mode
+bindkey -v
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -109,3 +112,6 @@ alias la="exa -la"
 alias rm="rm -I"
 
 alias dotconfig='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+
+alias bltc="bluetoothctl power on && bluetoothctl connect"
+alias hx=helix
