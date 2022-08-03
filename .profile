@@ -3,9 +3,8 @@
 #
 
 # Environment Vars
+##general
 export EDITOR=nvim
-export PATH="$HOME/.local/bin:$PATH"
-
 ## dotnet cli
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 ## android
@@ -24,5 +23,8 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 ##stack
 export STACK_ROOT="$XDG_DATA_HOME"/stack
+
+##Path
+export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$PATH"
 
 [[ -z $DISPLAY ]] && [[ $(tty) = "/dev/tty1" ]] && exec startx
