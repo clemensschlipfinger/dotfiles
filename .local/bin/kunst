@@ -35,8 +35,9 @@ dfeh --auto-reload --title KUNST -g 512x512 $coverfile &
 
 reload
 
-playerctl -F metadata --format '{{mpris:length}}' | 
+playerctl -F metadata --format '{{xesam:title}}{{xesam:url}}{{xesam:contentCreate}}{{xesam:artis}}{{mpris:artUrl}}{{mpris:trackid}}{{mpris:length}}{{xesam:album}}{{xesam:artist}}{{xesam:album}}{{xesam:title}}' |
 while read ; do
     playerctl metadata --format '{{xesam:artist}} - {{xesam:album}} - {{xesam:title}}'
     reload
 done
+
