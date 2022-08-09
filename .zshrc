@@ -110,6 +110,8 @@ alias ll="exa -l"
 alias la="exa -la"
 
 alias rm="rm -I"
+alias cp='cp -i'
+alias mv='mv -i'
 
 alias dotconfig='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
