@@ -1,0 +1,8 @@
+#!/bin/bash
+cointop_out=`cointop price -c $@ 2> /dev/null`
+if [ $? -eq 1 ]
+then
+    echo "api exhausted"
+else
+    echo $@ $cointop_out
+fi
