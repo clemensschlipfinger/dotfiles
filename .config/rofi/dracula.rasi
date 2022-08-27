@@ -1,13 +1,13 @@
 /*Dracula theme based on the Purple official rofi theme*/
-
 @import "theme"
 
 * {
     font: "ricefont 12";
     foreground: #f8f8f2;
     background-color: #242424;
-    /*active-background: #4a4190;*/
+    //active-background: #6272a4;
     urgent-background: #ff5555;
+    urgent-foreground: #282a36;
     selected-background: @active-background;
     selected-urgent-background: @urgent-background;
     selected-active-background: @active-background;
@@ -16,12 +16,12 @@
 }
 
 #window {
-    width:750;
-    background-color: @background;
+    width: 800;
+    background-color: @background-color;
     border:           2;
     border-radius: 0;
     border-color: @bordercolor;
-    padding:          5;
+    padding:          6;
 }
 #mainbox {
     border:  0;
@@ -42,28 +42,13 @@
     spacing:      2px ;
     scrollbar:    false;
     padding:      2px 0px 0px ;
-    columns: 1; 
-    lines: 10;
 }
-
-/* Rofi vers 1.7.0*/
-element-text, element-icon {
-    background-color: inherit;
-    text-color:       inherit;
-    padding: 1px ;
-}
-
 #element {
     border:  0;
+    padding: 1px ;
 }
-
-#element.highlighed.active{
-    background-color: #ffffff;
-    text-color:       @foreground;
-}
-
 #element.normal.normal {
-    background-color: @background;
+    background-color: @background-color;
     text-color:       @foreground;
 }
 #element.normal.urgent {
@@ -87,7 +72,7 @@ element-text, element-icon {
     text-color:       @foreground;
 }
 #element.alternate.normal {
-    background-color: @background;
+    background-color: @background-color;
     text-color:       @foreground;
 }
 #element.alternate.urgent {
@@ -130,11 +115,15 @@ element-text, element-icon {
     text-color: @foreground;
 }
 #inputbar {
-    children:   [entry];
+    children:   [ prompt,textbox-prompt-colon,entry];
 }
 #textbox-prompt-colon {
     expand:     false;
     str:        ":";
     margin:     0px 0.3em 0em 0em ;
     text-color: @foreground;
+}
+element-text, element-icon {
+    background-color: inherit;
+    text-color: inherit;
 }
