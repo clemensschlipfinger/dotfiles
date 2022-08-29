@@ -206,7 +206,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_Return ), spawn $ XMonad.terminal conf)
 
     -- launch rofi -show run
-    , ((modm,               xK_p      ), spawn $ "rofi -show drun")
+    , ((modm,               xK_p      ), spawn $ "rofi -show drun -m primary")
 
     -- launch dmenu
     , ((modm .|. shiftMask, xK_p      ), spawn $ "tdmenu_run")
@@ -225,7 +225,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
 -- Other Keybindings
     -- power menu
-    , ((modm .|.  shiftMask, xK_0     ), spawn "rofi -show power-menu -modi power-menu:rofi-power-menu")
+    , ((modm .|.  shiftMask, xK_0     ), spawn "rofi -m primary -show power-menu -modi power-menu:rofi-power-menu")
 
 -- Fn-Key Keybindings
     -- Brightness
