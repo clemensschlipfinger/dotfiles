@@ -66,7 +66,7 @@ DESKTOP_DEFAULT_THEME=$(cat ~/.config/desktop-themes/default)
 feh --no-fehbg --bg-scale $(cat ~/.config/desktop-themes/$DESKTOP_DEFAULT_THEME/feh)
 
 # setup links for default theme
-~/.local/bin/themeswitcher $DESKTOP_DEFAULT_THEME -no-x
+~/.local/bin/themeswitcher $DESKTOP_DEFAULT_THEME --no-x
 
 # polkit agent
 lxqt-policykit-agent &

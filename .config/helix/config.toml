@@ -1,7 +1,7 @@
 theme = "onedark-trans"
 
 [editor]
-line-number = "relative"
+line-number = "absolute"
 mouse = true 
 true-color = true
 auto-pairs = true 

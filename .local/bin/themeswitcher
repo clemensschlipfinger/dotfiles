@@ -13,50 +13,65 @@
 # but with the -no-x flag
 
 settheme () {
-    # Set the Theme #
-    ln -sf $themepath/dmenu ~/.config/dmenu/color
-    ln -sf $themepath/theme.rasi ~/.config/rofi/
-    ln -sf $(cat $themepath/feh) ~/.config/feh/background
+		echo applying theme $wanted_theme
 
-    # Recompile Xmonad
-    ln -sf $themepath/theme.hs ~/.xmonad/lib/Theme.hs
-    xmonad --recompile
+		# Set the Theme #
+		ln -sf $themepath/dmenu ~/.config/dmenu/color
+		ln -sf $themepath/theme.rasi ~/.config/rofi/
+		ln -sf $(cat $themepath/feh) ~/.config/feh/background
 
-    # log the new active theme
-    echo $1 > $themesfolder/active
-    return 0
+		# Recompile Xmonad
+		ln -sf $themepath/theme.hs ~/.xmonad/lib/Theme.hs
+		xmonad --recompile
+
+		# log the new active theme
+		echo $wanted_theme > $themesfolder/active
+		return 0
 }
 
 restartxapps () {
-    ### Restart the Applications ###
-    #Feh
-    feh --bg-scale --no-fehbg ~/.config/feh/background
+		echo restarting the xorg applications
+		## Restart the Applications ###
+		#Feh
+		feh --bg-scale --no-fehbg ~/.config/feh/background
 
-    #Polybar
-    #COLOR=$(cat $themepath/polybar) ~/.config/polybar/launch.sh &> /dev/null &
+		#Polybar
+		#COLOR=$(cat $themepath/polybar) ~/.config/polybar/launch.sh &> /dev/null &
 
-    #Xmonad
-    xmonad --restart
+		#Xmonad
+		xmonad --restart
 
 }
 	
 ask () {
-	confirmation=$(printf "no\nyes\n" | tdmenu -p "activate $1 theme?")
-	[ $confirmation = "yes" ] && return 0;
-	return 1
+		confirmation=$(printf "no\nyes\n" | tdmenu -p "activate $wanted_theme theme?")
+		[ $confirmation = "yes" ] && return 0;
+		return 1;
 }
 
-themepath=~/.config/desktop-themes/$1
+wanted_theme=$1
+set_option=$2
+
+themepath=~/.config/desktop-themes/$wanted_theme
 themesfolder=~/.config/desktop-themes/
 
 #prove selected theme 
-[ -z $1 ] && echo no theme selected. && exit; 
+[ -z $wanted_theme ] && echo no theme selected. && exit; 
 ls  $themepath 1>/dev/null 2>/dev/null
 [ ! $? -eq 0 ] && echo selected theme not valid. && exit;
 
 #check if theme is already active
-[ $1 = $(cat $themesfolder/active) ] && echo selected theme already active &&exit
+[ $wanted_theme = $(cat $themesfolder/active) ] && echo selected theme already active &&exit
 
-#apply theme
-settheme $1
-restartxapps
+	
+if [ $set_option -z ] ; then
+		ask
+		[ $? -eq 1 ] && echo not applying. && exit
+		settheme
+		restartxapps
+elif [ $set_option = "--no-x" ] ; then
+		settheme
+fi
+
+
+
