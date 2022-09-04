@@ -27,4 +27,4 @@ export STACK_ROOT="$XDG_DATA_HOME"/stack
 ##Path
 export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$PATH"
 
-[[ -z $DISPLAY ]] && [[ $(tty) = "/dev/tty1" ]] && exec startx
+#[ -z $DISPLAY ] && [ $(tty) = "/dev/tty1" ] && exec startx

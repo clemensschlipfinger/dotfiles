@@ -64,7 +64,7 @@ ls  $themepath 1>/dev/null 2>/dev/null
 [ $wanted_theme = $(cat $themesfolder/active) ] && echo selected theme already active &&exit
 
 	
-if [ $set_option -z ] ; then
+if [ -z $set_option ] ; then
 		ask
 		[ $? -eq 1 ] && echo not applying. && exit
 		settheme
