@@ -4,7 +4,7 @@
 
 # Environment Vars
 ##general
-export EDITOR=nvim
+export EDITOR=helix
 ## dotnet cli
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 ## android
