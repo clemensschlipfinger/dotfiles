@@ -5,5 +5,18 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
+#mimic Zsh run-help ability
+run-help() { help "$READLINE_LINE" 2>/dev/null || man "$READLINE_LINE"; }
+bind -m vi-insert -x '"\eh": run-help'
+
+#command not found helper
+source /usr/share/doc/pkgfile/command-not-found.bash
+
+# aliases
+source ~/.alias
+
+source /usr/share/bash-completion/completions/git
+__git_complete dotconfig __git_main
+
+#prompt 
+eval "$(starship init bash)"
