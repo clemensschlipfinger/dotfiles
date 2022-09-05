@@ -10,7 +10,8 @@ run-help() { help "$READLINE_LINE" 2>/dev/null || man "$READLINE_LINE"; }
 bind -m vi-insert -x '"\eh": run-help'
 
 #command not found helper
-source /usr/share/doc/pkgfile/command-not-found.bash
+#need to install pkgfile and run pkgfile -u
+#source /usr/share/doc/pkgfile/command-not-found.bash
 
 # aliases
 source ~/.alias
@@ -20,3 +21,4 @@ __git_complete dotconfig __git_main
 
 #prompt 
 eval "$(starship init bash)"
+eval "$(zoxide init bash)"
