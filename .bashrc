@@ -6,8 +6,8 @@
 [[ $- != *i* ]] && return
 
 #mimic Zsh run-help ability
-run-help() { help "$READLINE_LINE" 2>/dev/null || man "$READLINE_LINE"; }
-bind -m vi-insert -x '"\eh": run-help'
+#run-help() { help "$READLINE_LINE" 2>/dev/null || man "$READLINE_LINE"; }
+#bind -m vi-insert -x '"\eh": run-help'
 
 #command not found helper
 #need to install pkgfile and run pkgfile -u
@@ -15,6 +15,9 @@ bind -m vi-insert -x '"\eh": run-help'
 
 # aliases
 source ~/.alias
+
+# bash completions
+complete -cf doas
 
 source /usr/share/bash-completion/completions/git
 __git_complete dotconfig __git_main
