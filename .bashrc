@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export HISTFILESIZE=
+export HISTSIZE=
+
 #mimic Zsh run-help ability
 #run-help() { help "$READLINE_LINE" 2>/dev/null || man "$READLINE_LINE"; }
 #bind -m vi-insert -x '"\eh": run-help'

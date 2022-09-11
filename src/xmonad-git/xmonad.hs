@@ -375,6 +375,7 @@ myManageHook = placeHook myPlacement <+> windowRules
             , className =? "Xsane"          --> doFloat
 
             , title     =? "KUNST"          --> doFloat
+            , title     =? "splash"         --> doFloat
 
             , resource  =? "desktop_window" --> doIgnore
             , resource  =? "kdesktop"       --> doIgnore
