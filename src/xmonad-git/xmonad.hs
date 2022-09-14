@@ -6,6 +6,7 @@
 --base
 import XMonad
 import Data.Monoid
+import Data.List
 import System.Exit
 --import System.Environment
 --import System.IO
@@ -369,9 +370,8 @@ myManageHook = placeHook myPlacement <+> windowRules
         myPlacement = fixed(0.5,0.5)
         windowRules = composeAll
             [ className =? "MPlayer"        --> doFloat
-            , className =? "Gimp"           --> doFloat
+            , fmap ("Gimp" `isPrefixOf`) className --> doFloat
             , className =? "Xmessage"       --> doFloat
-
             , className =? "Xsane"          --> doFloat
 
             , title     =? "KUNST"          --> doFloat
@@ -379,7 +379,9 @@ myManageHook = placeHook myPlacement <+> windowRules
 
             , resource  =? "desktop_window" --> doIgnore
             , resource  =? "kdesktop"       --> doIgnore
+          
             ]
+          where role = stringProperty "WM_WINDOW_ROLE"
 
 ------------------------------------------------------------------------
 -- Event handling
