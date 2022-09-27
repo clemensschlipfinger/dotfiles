@@ -373,6 +373,7 @@ myManageHook = placeHook myPlacement <+> windowRules
             , fmap ("Gimp" `isPrefixOf`) className --> doFloat
             , className =? "Xmessage"       --> doFloat
             , className =? "Xsane"          --> doFloat
+            , className =? "Nextcloud"          --> doFloat
 
             , title     =? "KUNST"          --> doFloat
             , title     =? "splash"         --> doFloat

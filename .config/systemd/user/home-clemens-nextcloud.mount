@@ -1,0 +1,15 @@
+[Unit]
+Description=Mount NextCloud Steinanet
+After=network-online.target
+Wants=network-online.target
+
+[Mount]
+What=https://cloud.steinanet.at/remote.php/dav/files/clemens/
+Where=/home/clemens/nextcloud/
+Options=rw,user
+Type=davfs
+TimeoutSec=15
+
+[Install]
+WantedBy=multi-user.target
+

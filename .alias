@@ -7,9 +7,9 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 alias ls="ls --color=auto"
-alias l="exa"
-alias ll="exa -l"
-alias la="exa -laa"
+alias l="exa --icons"
+alias ll="exa -l --icons"
+alias la="exa -laa --icons"
 
 alias hx=helix
 alias cd=z
