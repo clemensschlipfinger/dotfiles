@@ -18,3 +18,13 @@ set autoindent
 
 "Set Theme
 colorscheme peachpuff
+
+"Add helix like jumps
+
+"jump to start of line
+nmap gh 0
+vmap gh 0
+
+"jump to end of line
+nmap gl $
+vmap gl $
