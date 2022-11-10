@@ -28,3 +28,6 @@ vmap gh 0
 "jump to end of line
 nmap gl $
 vmap gl $
+
+"set relative lines 
+set relativenumber
