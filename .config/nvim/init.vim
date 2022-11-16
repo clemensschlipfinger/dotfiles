@@ -17,7 +17,7 @@ set expandtab
 set autoindent
 
 "Set Theme
-colorscheme peachpuff
+colorscheme default
 
 "Add helix like jumps
 
