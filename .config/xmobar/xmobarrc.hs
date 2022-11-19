@@ -40,9 +40,10 @@ Config { font = "xft:ricefont:size=8" -- default font
             -- , Run Com "pulsemixer" [ "--get-volume" , "|", "cat"] "vol" 10
 		    , Run Brightness [ "-w", "3", "-t", "<fn=1>󰃠</fn> <percent>%", "--", "-D", "intel_backlight" ] 10
 		    , Run XMonadLog
-				, Run Com "cointop-price-script" [ "ETH" ] "coin" 36000
+				-- , Run Com "cointop-price-script" [ "ETH" ] "coin" 36000
        ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <fn=1>󰣇</fn> %XMonadLog%}{<fn=2> </fn> %coin%  |  %multicpu%  |  %cpufreq%  |  %multicoretemp%  |  %memory%  |  %wi%  |  %alsa:default:Master%  |  %bright%  |  %battery%  |  %date%  |  <fc=#aaaaaa>%uname%</fc>  "
+       -- , template = " <fn=1>󰣇</fn> %XMonadLog%}{<fn=2> </fn> %coin%  |  %multicpu%  |  %cpufreq%  |  %multicoretemp%  |  %memory%  |  %wi%  |  %alsa:default:Master%  |  %bright%  |  %battery%  |  %date%  |  <fc=#aaaaaa>%uname%</fc>  "
+       , template = " <fn=1>󰣇</fn> %XMonadLog%}{%multicpu%  |  %cpufreq%  |  %multicoretemp%  |  %memory%  |  %wi%  |  %alsa:default:Master%  |  %bright%  |  %battery%  |  %date%  |  <fc=#aaaaaa>%uname%</fc>  "
        }
