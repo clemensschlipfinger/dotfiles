@@ -53,20 +53,12 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on' # font fix java
 xsetroot -cursor_name left_ptr
 
 #Swap <Esc> key with <Caps> key
-setxkbmap -option caps:swapescape
-
-#Set keybindings for X:
-#xbindkeys -p &
+#setxkbmap -option caps:swapescape
 
 ### Start Desktop Apps ###
-#set default theme
-DESKTOP_DEFAULT_THEME=$(cat ~/.config/desktop-themes/default)
-
+#
 # set wallpaper
-feh --no-fehbg --bg-scale $(cat ~/.config/desktop-themes/$DESKTOP_DEFAULT_THEME/feh)
-
-# setup links for default theme
-~/.local/bin/themeswitcher $DESKTOP_DEFAULT_THEME --no-x
+~/.fehbg
 
 # polkit agent
 lxqt-policykit-agent &
@@ -77,6 +69,9 @@ xss-lock -- dash -c "XSECURELOCK_NO_COMPOSITE=1 xsecurelock" &
 
 #compositor
 picom &
+
+#NextCloud
+com.nextcloud.desktopclient.nextcloud --background &
 
 #Start Xmonad 
 exec ~/.xmonad/xmonad-x86_64-linux

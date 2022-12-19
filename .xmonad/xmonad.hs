@@ -34,7 +34,6 @@ import XMonad.Layout.WindowNavigation --easy navigation of a workspace
 --import XMonad.Layout.SimpleFloat--Grid Float
 --import XMonad.Layout.LayoutHints --Make layouts respect size hints
 --import XMonad.Layout.Grid     --Grid Layout
---import XMonad.Layout.Spiral
 --import XMonad.Layout.Tabbed     --Tabbed Layout
 
 --Hooks
@@ -49,11 +48,18 @@ import XMonad.Hooks.StatusBar.PP --for xmobar
 -- Other
 import Graphics.X11.ExtraTypes.XF86 -- keysyms for the fn-keys
 
---Theme
-import Theme
-
 --Variables
 ----------------------------------------------------------------------
+--Theme
+--
+accentColor :: String
+accentColor = "#6156b8" --"#4a4190" 
+
+accentLightColor :: String
+accentLightColor = "#8c7dff" 
+
+deactiveColor :: String
+deactiveColor = "#454545" --"#2b2b2b"
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -208,9 +214,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch rofi -show run
     , ((modm,               xK_p      ), spawn $ "rofi -show drun -m primary")
-
-    -- launch dmenu
-    , ((modm .|. shiftMask, xK_p      ), spawn $ "tdmenu_run")
 
     -- launch a browser
     , ((modm .|. shiftMask, xK_f      ), spawn $ myBrowser )
@@ -415,8 +418,6 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = return ()
-    --Polybar
-    --spawnOnce "COLOR=$(cat ~/.config/desktop-themes/$DESKTOP_DEFAULT_THEME/polybar) ~/.config/polybar/launch.sh"
 -----------------------------------------------------------------------
 --Xmobar
 myXmobar = withSB $ statusBarProp "xmobar ~/.config/xmobar/xmobarrc.hs" $ pure $ myXmobarPP

@@ -5,6 +5,7 @@ text/plain=org.gnome.gedit.desktop;nvim.desktop;
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
 application/x-shellscript=nvim.desktop;org.gnome.gedit.desktop;
 text/csv=libreoffice-calc.desktop;
+application/x-executable=org.gnome.FileRoller.desktop;
 
 [Default Applications]
 image/jpeg=dfeh.desktop;

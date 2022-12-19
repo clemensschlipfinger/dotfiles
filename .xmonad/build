@@ -1,0 +1,7 @@
+# build script for xmonad
+#
+# archlinux has dynamic libraries for haskell so '-dynamic' is important 
+
+# compile xmonad
+ghc --make xmonad.hs -dynamic -i -ilib -main-is main -v0 -outputdir ~/.xmonad/build-x86_64-linux -o ~/.xmonad/xmonad-x86_64-linux
+

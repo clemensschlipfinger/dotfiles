@@ -1,11 +1,10 @@
 /*Dracula theme based on the Purple official rofi theme*/
-@import "theme"
 
 * {
     font: "ricefont 12";
     foreground: #f8f8f2;
     background-color: #242424;
-    //active-background: #6272a4;
+    active-background: #6156b8;
     urgent-background: #ff5555;
     urgent-foreground: #282a36;
     selected-background: @active-background;
